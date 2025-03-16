@@ -32,6 +32,12 @@
           "microphonePermission": "Allow Rapfo to access your microphone",
           "recordAudioAndroid": true
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Rapfo needs accesses your photos to help you with homework."
+        }
       ]
     ]
   }

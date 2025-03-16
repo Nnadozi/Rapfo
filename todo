@@ -1,5 +1,2 @@
-- Format latex properly for math
-- Add modes
-  - Answer mode
-  - Explain mode
-- Polish code
+- Viusally appealing output
+- Make cropping work
