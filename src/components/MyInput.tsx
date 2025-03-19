@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const OnboardNav = () => {
+const MyInput = () => {
   return (
     <View>
-      <Text>OnboardNav</Text>
+      <Text>MyInput</Text>
     </View>
   )
 }
 
-export default OnboardNav
+export default MyInput
 
 const styles = StyleSheet.create({})

@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, TextStyle, ViewStyle } from 'react-native'
 import React, { ReactNode } from 'react'
 
-type PageBodyProps = {
+type PageProps = {
     style?: ViewStyle,
     children?:React.ReactNode,
 }
 
-const PageBody = ({style, children}: PageBodyProps) => {
+const Page = ({style, children}: PageProps) => {
   return (
     <View style={[styles.con, style]}>
         {children}
@@ -14,7 +14,7 @@ const PageBody = ({style, children}: PageBodyProps) => {
   )
 }
 
-export default PageBody
+export default Page
 
 const styles = StyleSheet.create({
     con: {
