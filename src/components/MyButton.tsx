@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Button } from 'react-native';
 
-const MyButton = () => {
+interface MyButtonProps {
+  title:string;
+  onPress: () => void;
+}
+
+const MyButton = ({title, onPress}: MyButtonProps) => {
   return (
-    <View>
-      <Text>MyButton</Text>
-    </View>
+    <Button 
+      title={title}
+      onPress={onPress}
+    />
   )
 }
 

@@ -4,11 +4,12 @@ import React, { ReactNode } from 'react'
 type PageProps = {
     style?: ViewStyle,
     children?:React.ReactNode,
+    padding?:string;
 }
 
-const Page = ({style, children}: PageProps) => {
+const Page = ({style, children, padding}: PageProps) => {
   return (
-    <View style={[styles.con, style]}>
+    <View style={[styles.con, style,{padding: padding ? padding : undefined }]}>
         {children}
     </View>
   )

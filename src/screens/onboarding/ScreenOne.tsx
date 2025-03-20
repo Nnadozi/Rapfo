@@ -3,11 +3,15 @@ import React from 'react'
 import Page from '../../components/Page'
 import MyText from '../../components/MyText'
 import ProgressBar from '../../components/ProgressBar'
+import MyButton from '../../components/MyButton'
+import { useNavigation } from '@react-navigation/native'
 
 const ScreenOne = () => {
+  const nav = useNavigation()
   return (
     <Page>
-      <ProgressBar progress={0.4} />
+      <MyText>Screen One</MyText>
+      <MyButton title='Next' onPress={ () => nav.navigate('OnboardingTwo')} />
     </Page>
   )
 }
