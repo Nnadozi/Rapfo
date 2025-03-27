@@ -1,21 +1,32 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import MyText from '../../components/MyText'
 import MyButton from '../../components/MyButton'
 import { useNavigation } from '@react-navigation/native'
 import Page from '../../components/Page'
+import RevenueCatUI from 'react-native-purchases-ui';
+import Purchases from 'react-native-purchases'
+
 
 const Paywall = () => {
   const nav = useNavigation()
-  function processPayment(){
-
+  async function getOfferings(){
+    try {
+      const offerings = await Purchases.getOfferings();
+      if (offerings.current !== null && offerings.current.availablePackages.length !== 0) {
+        console.log("They are offerings")
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
+  useEffect(() =>{
+    getOfferings()
+  },[])
   return (
-    <Page>
-      <MyText>Paywall</MyText>
-      <MyButton title='pay' onPress={processPayment}  />
-      <MyButton title='skip' onPress={ () => nav.navigate("Main")}  />
-    </Page>
+    <View style={{ flex: 1 }}>
+    
+    </View>
   )
 }
 
