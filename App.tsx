@@ -8,6 +8,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import OnboardNav from './src/nav/OnboardNav';
 import MainNav from './src/nav/MainNav';
 import Purchases, { PurchasesOffering } from 'react-native-purchases';
+import {StatusBar} from "expo-status-bar"
 
 SplashScreen.preventAutoHideAsync();
 
@@ -47,12 +48,15 @@ export default function App() {
   
 
   return (
+    <>
+    <StatusBar style='dark' />
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name='Onboarding' component={OnboardNav} />
         <Stack.Screen name='Main' component={MainNav} />
       </Stack.Navigator>
     </NavigationContainer>
+    </>
   );
 }
 

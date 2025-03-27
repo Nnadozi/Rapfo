@@ -24,9 +24,9 @@ const Paywall = () => {
     getOfferings()
   },[])
   return (
-    <View style={{ flex: 1 }}>
-    
-    </View>
+    <Page>
+      <MyButton title='Skip' onPress={() => nav.navigate('Main')} />
+    </Page>
   )
 }
 

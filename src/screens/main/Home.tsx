@@ -46,9 +46,8 @@ const Home = () => {
     setLoading(false)
   }
 
-  return (
-    <Page>
-      <ScrollView style = {{paddingTop:"10%"}}> 
+  /**
+   *       <ScrollView style = {{paddingTop:"10%"}}> 
         <MyText>My daily digest (5 minutes)</MyText>
         <MyButton title='generate digest' onPress={generateDigest} />
         {loading && (
@@ -56,6 +55,13 @@ const Home = () => {
         )}
         <Markdown>{digest}</Markdown>
       </ScrollView>
+   */
+  return (
+    <Page>
+      <MyText bold >Daily Digest</MyText>
+      <MyText>Share, favorite, progress indicator</MyText>
+      <MyText bold >Other</MyText>
+      <MyText>Welcome greeting, current streak, rankup / badge notifications</MyText>
     </Page>
   );
 };
