@@ -5,6 +5,7 @@ import MyText from '../../components/MyText'
 import MyButton from '../../components/MyButton'
 import { useNavigation } from '@react-navigation/native'
 import { Icon } from '@rneui/base'
+import FeatureDesc from '../../components/FeatureDesc'
 
 const Features = () => {
   const nav = useNavigation()
@@ -20,12 +21,17 @@ const Features = () => {
             <MyText textAlign='center' fontSize='small'>A simple breakdown</MyText>
           </View>
         </View>
+        <View style = {styles.mainCon}>
+          <FeatureDesc iconName='school' title='Daily Gists' subTitle='Spend 5 minutes learning something new every day.'/>
+          <FeatureDesc iconName='history' title='History' subTitle='Track your progress and revisit gists.'/>
+          <FeatureDesc iconName='category'  title='Personalized' subTitle='Topics tailored to your interests.'/>
+          <FeatureDesc iconName='hand' iconType='entypo' title='Interactive' subTitle='Save, share, and like gists.'/>
+        </View>
         <MyButton width='85%' title='Next' onPress={ () => nav.navigate('Personalization')} />
       </View>
     </Page>
   )
 }
-
 
 export default Features
 
@@ -35,8 +41,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: 'center',
     width:"100%",
-    paddingTop:"15%",
-    paddingBottom:"12.5%"
+    paddingTop:"12.5%",
+    paddingBottom:"10%"
   },
   topRow:{
     flexDirection:"row",
@@ -47,24 +53,11 @@ const styles = StyleSheet.create({
   icon:{
     position: 'absolute',
     left: "5%",
+  },
+  mainCon:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    width:"100%",
+    height:"80%"
   }
 })
-
-//        <Icon size={30} name='arrow-back' onPress={ nav.goBack} />
-/**
- * Title: "How It Works"
-
-Content:
-
-Daily Gists – Learn something new every day.
-
-History – Track your progress and revisit gists.
-
-Personalized Experience – Topics tailored to your interests.
-
-Interactive Features – Save, share, and like gists.
-
-CTA: “Next” or “Continue” to move to the next step.
-
-
- */
