@@ -7,6 +7,7 @@ import { StatusBar } from "expo-status-bar";
 import { useSettingsStore } from './src/stores/useSettingStore';
 import OnboardNav from './src/nav/OnboardNav';
 import MainNav from './src/nav/MainNav';
+import AuthNav from './src/nav/AuthNav';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,6 +40,7 @@ export default function App() {
       <NavigationContainer theme={navigationTheme}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name='Onboarding' component={OnboardNav} />
+          <Stack.Screen name='Authentication' component={AuthNav} />
           <Stack.Screen name='Main' component={MainNav} />
         </Stack.Navigator>
       </NavigationContainer>

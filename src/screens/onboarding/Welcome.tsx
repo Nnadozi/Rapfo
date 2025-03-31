@@ -12,8 +12,11 @@ const Welcome = () => {
     <Page customBackground style={{justifyContent:"center", alignItems:"center"}}>
       <Image resizeMode='contain' style={styles.img} source={require('../../../assets/images/icon.png')} />
       <MyText bold fontSize='XL'>Welcome to Rapfo!</MyText>
-      <MyText textAlign='center' fontSize='small'>Learn something new in just 5 minutes a day.</MyText>
-      <MyButton style={{marginTop:"5%"}} width='85%' title='Get Started' onPress={ () => nav.navigate('Features')} />
+      <MyText style={{marginVertical:"1%"}} textAlign='center' fontSize='small'>Expand your knowledge in just
+         <MyText fontSize='small' bold> 5 minutes</MyText> a day.
+      </MyText>
+      <MyButton style={{marginVertical:"3%"}} width='85%' title='Get Started' onPress={ () => nav.navigate('Features')} />
+      <MyButton type='outline' width='85%' title='Returning User? Log in' onPress={ () => nav.navigate('Authentication')} />
     </Page>
   )
 }
@@ -26,6 +29,6 @@ const styles = StyleSheet.create({
     height:undefined,
     borderRadius:30,
     aspectRatio:1,
-    marginVertical:"5%"
+    marginVertical:"03%"
   }
 })

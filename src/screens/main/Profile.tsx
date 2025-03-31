@@ -24,7 +24,7 @@ const Profile = () => {
       <MyText>Selected Theme: {theme}</MyText>
       <MyButton title="Light Mode" onPress={() => setTheme('light')} />
       <MyButton title="Dark Mode" onPress={() => setTheme('dark')} />
-      <MyButton title="System Default" onPress={() => setTheme('system')} />
+      <MyButton type='outline' title="System Default" onPress={() => setTheme('system')} />
     </Page>
   )
 }
