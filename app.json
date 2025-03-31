@@ -38,7 +38,8 @@
             "./assets/fonts/Figtree-Bold.ttf"
           ]
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "extra": {
       "eas": {

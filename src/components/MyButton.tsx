@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Button } from '@rneui/base';
 import { ViewStyle } from 'react-native';
+import { useSettingsStore } from '../stores/useSettingStore';
 
 
 interface MyButtonProps {
@@ -12,6 +13,7 @@ interface MyButtonProps {
 }
 
 const MyButton = ({title, onPress, width, style}: MyButtonProps) => {
+  const {navigationTheme} = useSettingsStore()
   return (
     <Button
       title={title}
@@ -19,6 +21,7 @@ const MyButton = ({title, onPress, width, style}: MyButtonProps) => {
       containerStyle={[{width:width, borderRadius:50},style]}
       titleStyle={{fontFamily:'Figtree-Bold'}}
       size='lg'
+      color={navigationTheme.colors.primary}
     />
   )
 }

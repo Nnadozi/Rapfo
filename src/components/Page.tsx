@@ -1,5 +1,6 @@
 import { StyleSheet, View, ViewStyle, ImageBackground } from 'react-native';
 import React from 'react';
+import { useSettingsStore } from '../stores/useSettingStore';
 
 type PageProps = {
     style?: ViewStyle;
@@ -9,16 +10,17 @@ type PageProps = {
 };
 
 const Page = ({ style, children, padding, customBackground }: PageProps) => {
+    const {navigationTheme} = useSettingsStore()
     return customBackground ? (
         <ImageBackground
-            source={require('../../assets/images/background.png')}
-            style={[styles.background, style,{ padding: padding ? Number(padding) : undefined }]} 
+            source={ navigationTheme.dark ? require('../../assets/images/background-dark.png') :require('../../assets/images/background.png')}
+            style={[styles.background, style,{ padding: padding ? Number(padding) : undefined, backgroundColor:navigationTheme.colors.background  }]} 
             resizeMode="repeat"
         >
             {children}
         </ImageBackground>
     ) : (
-        <View style={[styles.con, style, { padding: padding ? Number(padding) : undefined }]}>
+        <View style={[styles.con, style, { padding: padding ? Number(padding) : undefined, backgroundColor:navigationTheme.colors.background }]}>
             {children}
         </View>
     );

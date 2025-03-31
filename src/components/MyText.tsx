@@ -1,5 +1,6 @@
 import { Text, TextStyle } from 'react-native';
 import React from 'react';
+import { useSettingsStore } from '../stores/useSettingStore';
 
 interface TextProps {
   color?: string;
@@ -33,6 +34,7 @@ const MyText: React.FC<TextProps> = ({
   font = "Figtree-Regular",
   onPress,
 }) => {
+  const {navigationTheme} = useSettingsStore()
   return (
     <Text
       onPress={onPress}
@@ -40,7 +42,7 @@ const MyText: React.FC<TextProps> = ({
       style={[
         {
           fontSize: fontSizes[fontSize],
-          color,
+          color: color ? color : navigationTheme.colors.text,
           opacity,
           textAlign,
           fontFamily: bold ? "Figtree-Bold" : font
