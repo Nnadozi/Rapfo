@@ -2,17 +2,23 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Welcome from '../screens/onboarding/Welcome'
-import Features from '../screens/onboarding/Features'
-import Personalization from '../screens/onboarding/Personalization'
 import Paywall from '../screens/onboarding/Paywall'
+import Overview from '../screens/onboarding/Overview'
+import ChooseTopic from '../screens/onboarding/ChooseTopic'
+import ChooseTheme from '../screens/onboarding/ChooseTheme'
+import EnableNotifications from '../screens/onboarding/EnableNotifications'
+import CreateAccount from '../screens/onboarding/CreateAccount'
 
 const OnboardNav = () => {
   const Stack = createNativeStackNavigator()
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name='Welcome' component={Welcome} />
-      <Stack.Screen name='Features' component={Features} />
-      <Stack.Screen name='Personalization' component={Personalization} />
+      <Stack.Screen name='Overview' component={Overview} />
+      <Stack.Screen name='ChooseTopic' component={ChooseTopic} />
+      <Stack.Screen name='ChooseTheme' component={ChooseTheme} />
+      <Stack.Screen name='EnableNotifications' component={EnableNotifications} />
+      <Stack.Screen name='CreateAccount' component={CreateAccount} />
       <Stack.Screen name='Paywall' component={Paywall} />
     </Stack.Navigator>
   )
