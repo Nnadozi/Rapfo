@@ -5,6 +5,8 @@ import MyText from './MyText';
 import MyIcon from './MyIcon';
 import MyButton from './MyButton';
 import { useNavigation } from '@react-navigation/native';
+import * as Progress from 'react-native-progress';
+import { useSettingsStore } from '../stores/useSettingStore';
 
 interface OnboardingPageProps {
     title:string;
@@ -15,15 +17,28 @@ interface OnboardingPageProps {
     children?:React.ReactNode;
 }
 
+
 const OnboardingPage = (props: OnboardingPageProps) => {
   const nav = useNavigation();
+  const {navigationTheme} = useSettingsStore()
   return (
     <Page customBackground> 
     <View style={styles.con}>
-      <View style = {styles.topRow}>
-        <View style = {styles.icon}>
-          <MyIcon size={25} name='chevron-back-outline' type='ionicon' onPress={ nav.goBack} />
-        </View>
+      <View style = {styles.barRow}>
+        <MyIcon 
+        color={navigationTheme.colors.primary}
+        size={25} name='chevron-back-outline' 
+        type='ionicon' onPress={nav.goBack} />
+        <Progress.Bar 
+        height={15} width={310}
+        style = {styles.progress}
+        useNativeDriver
+        animationConfig={{bounciness:1}}
+        animationType='spring' 
+        progress={props.progress} 
+        color={navigationTheme.colors.primary} />
+      </View>
+      <View style = {styles.titleRow}>
         <View>
           <MyText textAlign='center' bold fontSize='XL'>{props.title}</MyText>
           <MyText style={{maxWidth:"90%", alignSelf:"center"}} textAlign='center' fontSize='small'>{props.subTitle}</MyText>
@@ -46,20 +61,26 @@ const styles = StyleSheet.create({
       paddingTop:"12.5%",
       paddingBottom:"10%"
     },
-    topRow:{
+    titleRow:{
       flexDirection:"row",
       justifyContent: 'center',
       alignItems: 'center',
       width:"100%"
-    },
-    icon:{
-      position: 'absolute',
-      left: "5%",
     },
     mainCon:{
       justifyContent: 'center',
       alignItems: 'center',
       width:"100%",
       height:"80%"
+    },
+    barRow:{
+      flexDirection:"row",
+      width:"100%",
+      justifyContent: 'center',
+      alignItems: 'center',
+      //borderWidth:1,
+    },
+    progress:{
+      
     }
 })

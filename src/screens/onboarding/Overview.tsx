@@ -7,7 +7,7 @@ const Overview = () => {
     <OnboardingPage 
     title='How It Works' 
     subTitle='A simple breakdown'
-    progress={20}
+    progress={0.2}
     nextScreen={'ChooseTopic'}
     />
   )

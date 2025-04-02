@@ -7,7 +7,7 @@ const ChooseTheme = () => {
     <OnboardingPage 
     title='Pick Your Theme' 
     subTitle='You can change this later'
-    progress={60}
+    progress={0.6}
     nextScreen={'EnableNotifications'}
     />
   )

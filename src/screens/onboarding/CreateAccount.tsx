@@ -7,7 +7,7 @@ const CreateAccount = () => {
     <OnboardingPage 
     title='Create Account' 
     subTitle='Sign up to save your progress, rank up, and sync across devices!'
-    progress={100}
+    progress={1}
     nextScreen={'Paywall'}
     />
   )

@@ -7,7 +7,7 @@ const ChooseTopic = () => {
     <OnboardingPage 
     title='Choose Topics' 
     subTitle='What interests you?'
-    progress={40}
+    progress={0.4}
     nextScreen={'ChooseTheme'}
     />
   )
