@@ -16,10 +16,11 @@ const Welcome = () => {
          <MyText fontSize='small' bold> 5 minutes</MyText> a day.
       </MyText>
       <MyButton style={{marginVertical:"3%"}} width='85%' title='Get Started' onPress={ () => nav.navigate('Overview')} />
-      <MyButton type='outline' width='85%' title='Returning User? Log in' onPress={ () => nav.navigate('Authentication')} />
     </Page>
   )
 }
+
+//      <MyButton type='outline' width='85%' title='Returning User? Log in' onPress={ () => nav.navigate('Authentication')} />
 
 export default Welcome
 

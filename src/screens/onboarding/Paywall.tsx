@@ -25,7 +25,7 @@ const Paywall = () => {
   },[])
   return (
     <Page>
-      <MyButton title='Skip' onPress={() => nav.navigate('ChooseTopic')} />
+      <MyButton title='Skip' onPress={() => nav.navigate('Main')} />
     </Page>
   )
 }

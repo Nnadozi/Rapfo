@@ -22,7 +22,7 @@ const OnboardingPage = (props: OnboardingPageProps) => {
   const nav = useNavigation();
   const {navigationTheme} = useSettingsStore()
   return (
-    <Page customBackground> 
+    <Page dontApplyPadding customBackground> 
     <View style={styles.con}>
       <View style = {styles.barRow}>
         <MyIcon 

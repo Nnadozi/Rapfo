@@ -7,7 +7,6 @@ import Overview from '../screens/onboarding/Overview'
 import ChooseTopic from '../screens/onboarding/ChooseTopic'
 import ChooseTheme from '../screens/onboarding/ChooseTheme'
 import EnableNotifications from '../screens/onboarding/EnableNotifications'
-import CreateAccount from '../screens/onboarding/CreateAccount'
 
 const OnboardNav = () => {
   const Stack = createNativeStackNavigator()
@@ -18,7 +17,6 @@ const OnboardNav = () => {
       <Stack.Screen name='ChooseTopic' component={ChooseTopic} />
       <Stack.Screen name='ChooseTheme' component={ChooseTheme} />
       <Stack.Screen name='EnableNotifications' component={EnableNotifications} />
-      <Stack.Screen name='CreateAccount' component={CreateAccount} />
       <Stack.Screen name='Paywall' component={Paywall} />
     </Stack.Navigator>
   )

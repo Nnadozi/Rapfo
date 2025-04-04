@@ -1,28 +1,46 @@
-import { StyleSheet, View, ViewStyle, ImageBackground } from 'react-native';
+import { StyleSheet, View, ViewStyle, ImageBackground, SafeAreaView } from 'react-native';
 import React from 'react';
 import { useSettingsStore } from '../stores/useSettingStore';
 
 type PageProps = {
     style?: ViewStyle;
     children?: React.ReactNode;
-    padding?: string;
     customBackground?: boolean;
+    paddingHorizontal?: any;
+    paddingVertical?: any;
+    dontApplyPadding?: boolean; // Optional prop to skip padding
 };
 
-const Page = ({ style, children, padding, customBackground }: PageProps) => {
-    const {navigationTheme} = useSettingsStore()
+const Page = ({ style, children, customBackground, paddingHorizontal = "5%", paddingVertical = "12.5%",dontApplyPadding }: PageProps) => {
+    const { navigationTheme } = useSettingsStore();
+    
+    const paddingStyle = dontApplyPadding
+    ? {}
+    : {
+        paddingHorizontal,
+        paddingVertical,
+      };
+
+    const containerStyle = [
+        {
+        backgroundColor: navigationTheme.colors.background,
+        },
+        paddingStyle,
+        style,
+    ];
+
     return customBackground ? (
         <ImageBackground
-            source={ navigationTheme.dark ? require('../../assets/images/background-dark.png') :require('../../assets/images/background.png')}
-            style={[styles.background, style,{ padding: padding ? Number(padding) : undefined, backgroundColor:navigationTheme.colors.background  }]} 
+            source={navigationTheme.dark ? require('../../assets/images/background-dark.png') : require('../../assets/images/background.png')}
+            style={[styles.background, ...containerStyle]}
             resizeMode="repeat"
         >
             {children}
         </ImageBackground>
     ) : (
-        <View style={[styles.con, style, { padding: padding ? Number(padding) : undefined, backgroundColor:navigationTheme.colors.background }]}>
+        <SafeAreaView style={[styles.con, ...containerStyle]}>
             {children}
-        </View>
+        </SafeAreaView>
     );
 };
 

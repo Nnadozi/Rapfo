@@ -2,13 +2,13 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/main/Home';
-import Profile from '../screens/main/Profile';
+import Stats from '../screens/main/Stats';
 import History from '../screens/main/History';
 import { Icon } from '@rneui/base';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Favorites from '../screens/main/Favorites';
+import Settings from '../screens/main/Settings';
 
-const MainTabs = () =>{
+const MainNav = () =>{
   const Tabs = createBottomTabNavigator();
   return (
     <Tabs.Navigator screenOptions={{headerShown:false}}>
@@ -20,23 +20,18 @@ const MainTabs = () =>{
            tabBarIcon: ({focused}) => <Icon name='home' color={focused ? "#41AFEF" : 'lightgray'}  />,
            tabBarActiveTintColor:"#41AFEF",tabBarInactiveTintColor:'lightgray'
         }} />
-        <Tabs.Screen name="Profile" component={Profile}  options={{
-           tabBarIcon: ({focused}) => <Icon name='user' color={focused ? "#41AFEF" : 'lightgray'}  type='antdesign' />,
+        <Tabs.Screen name="Stats" component={Stats}  options={{
+           tabBarIcon: ({focused}) => <Icon name='stats-chart' color={focused ? "#41AFEF" : 'lightgray'} type='ionicon'  />,
+           tabBarActiveTintColor:"#41AFEF",tabBarInactiveTintColor:'lightgray'
+        }} />
+        <Tabs.Screen name="Settings" component={Settings}  options={{
+           tabBarIcon: ({focused}) => <Icon name='settings' color={focused ? "#41AFEF" : 'lightgray'} type='ionicon'  />,
            tabBarActiveTintColor:"#41AFEF",tabBarInactiveTintColor:'lightgray'
         }} />
     </Tabs.Navigator>
   )
 }
 
-const MainNav = () => {
-  const Stack = createNativeStackNavigator()
-  return (
-    <Stack.Navigator screenOptions={{headerShown:false}} >
-      <Stack.Screen name='MainTabs' component={MainTabs} />
-      <Stack.Screen name='Favorites' component={Favorites} />
-    </Stack.Navigator>
-  )
-}
 
 export default MainNav
 
