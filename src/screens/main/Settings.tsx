@@ -6,6 +6,7 @@ import { useSettingsStore } from '../../stores/useSettingStore'
 import MyButton from '../../components/MyButton'
 import SettingsHeader from '../../components/SettingsHeader'
 import { ButtonGroup } from '@rneui/base'
+import AppVersion from '../../constants/AppVersion'
 
 const Settings = () => {
   const { theme, setTheme } = useSettingsStore();
@@ -26,6 +27,7 @@ const Settings = () => {
     const selectedTheme = themeOptions[index].toLowerCase();
     setTheme(selectedTheme);
   };
+  const version = `Version ${AppVersion}`
 
   return (
     <Page style={{alignItems:"flex-start", justifyContent:"flex-start",paddingBottom:"5%"}}>
@@ -46,7 +48,7 @@ const Settings = () => {
       <SettingsHeader title="Terms of Service" iconName="information-circle" iconType='ionicon' />
       <SettingsHeader title="Privacy Policy" iconName="privacy-tip"/>
       <SettingsHeader title="Support" iconName="support" />
-      <SettingsHeader title="Version" iconName="hash" iconType='feather' />
+      <SettingsHeader title={version} iconName="smartphone" />
       </ScrollView> 
     </Page>
   )

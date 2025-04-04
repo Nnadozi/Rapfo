@@ -8,7 +8,8 @@ import { useNavigation } from '@react-navigation/native'
 const History = () => {
   const nav = useNavigation()
   return (
-    <Page>
+    <Page style={{alignItems:"flex-start", justifyContent:"flex-start",paddingBottom:"5%"}}>
+      <MyText bold fontSize="XL">History</MyText>
       <MyText>Search bar, filter (topic, favorite, date), favorites section</MyText>
       <MyButton title='Favorites' onPress={() => nav.navigate("Favorites")} />
     </Page>

@@ -1,14 +1,19 @@
-import { ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
 import Page from '../../components/Page';
 import MyText from '../../components/MyText';
 import MyButton from '../../components/MyButton';
 import Markdown from "react-native-markdown-display"
+import DigestPreview from '../../components/DigestPreview';
+import { Divider } from '@rneui/base';
+import Badge from '../../components/Badge';
+import MyIcon from '../../components/MyIcon';
+import { useNavigation } from '@react-navigation/native';
 
-//#3d8af5
 const apiKey = process.env.EXPO_PUBLIC_API_KEY
 
 const Home = () => {
+  const nav = useNavigation()
   const [digest, setDigest] = useState<string | null>("");
   const [loading, setLoading] = useState(false);
 
@@ -57,15 +62,35 @@ const Home = () => {
       </ScrollView>
    */
   return (
-    <Page>
-      <MyText bold >Daily Digest</MyText>
-      <MyText>Share, favorite, progress indicator</MyText>
-      <MyText bold >Other</MyText>
-      <MyText>Welcome greeting, current streak, rankup / badge notifications</MyText>
+    <Page style={{alignItems:"flex-start", justifyContent:"flex-start",paddingBottom:"5%"}}>
+      <View style={styles.topRow}>
+      <MyText fontSize='XL' bold>Home</MyText>
+      <MyIcon onPress={() => nav.navigate('Settings')} name='settings' size={30} />
+      </View>
+      <MyText style={{marginVertical:"2%"}} fontSize='small'>🔥 Current Streak: 5 - Keep it up</MyText>
+      <MyText style={{marginTop:"2%"}} fontSize='small'>Today's Digest</MyText>
+      <DigestPreview title='The Sun' category='Science' readingTime={5} date='April 7th, 2025'/>
+      <MyText color='gray' fontSize='small'>Upcoming Badges</MyText>
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"3%"}} />
+      <Badge/>
+      <Badge/>
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"3%"}} />
+      <MyText>Quote Of The Day</MyText>
+      <MyText>Fun Fact</MyText>
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"3%"}} />
+      <MyText>Current Rank: RANK</MyText>
+      <MyText>text</MyText>
     </Page>
   );
 };
 
 export default Home;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  topRow:{
+    flexDirection:"row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width:"100%"
+  }
+})

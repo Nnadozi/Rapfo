@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ViewStyle } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 import React from 'react'
 import { Icon } from '@rneui/base'
 import { useSettingsStore } from '../stores/useSettingStore';
@@ -14,14 +14,14 @@ interface MyIconProps {
 const MyIcon = (props: MyIconProps) => {
   const {navigationTheme} = useSettingsStore()
   return (
-    <Icon 
-    containerStyle = {props.containerStyle}
-    color={props.color ? props.color : navigationTheme.colors.text}
-    name={props.name}
-    size={props.size}
-    type={props.type}
-    onPress={props.onPress}
-     />
+    <TouchableOpacity activeOpacity={props.onPress ? 0.5 : 100} onPress={props.onPress} style={props.containerStyle}>
+      <Icon 
+      color={props.color ? props.color : navigationTheme.colors.text}
+      name={props.name}
+      size={props.size}
+      type={props.type}
+      />
+    </TouchableOpacity>
   )
 }
 

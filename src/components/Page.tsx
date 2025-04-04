@@ -8,7 +8,7 @@ type PageProps = {
     customBackground?: boolean;
     paddingHorizontal?: any;
     paddingVertical?: any;
-    dontApplyPadding?: boolean; // Optional prop to skip padding
+    dontApplyPadding?: boolean;
 };
 
 const Page = ({ style, children, customBackground, paddingHorizontal = "5%", paddingVertical = "12.5%",dontApplyPadding }: PageProps) => {
