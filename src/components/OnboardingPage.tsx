@@ -24,27 +24,31 @@ const OnboardingPage = (props: OnboardingPageProps) => {
   return (
     <Page dontApplyPadding customBackground> 
     <View style={styles.con}>
-      <View style = {styles.barRow}>
-        <MyIcon 
-        color={navigationTheme.colors.primary}
-        size={25} name='chevron-back-outline' 
-        type='ionicon' onPress={nav.goBack} />
-        <Progress.Bar 
-        height={15} width={310}
-        style = {styles.progress}
-        useNativeDriver
-        animationConfig={{bounciness:1}}
-        animationType='spring' 
-        progress={props.progress} 
-        color={navigationTheme.colors.primary} />
-      </View>
-      <View style = {styles.titleRow}>
-        <View>
-          <MyText textAlign='center' bold fontSize='XL'>{props.title}</MyText>
-          <MyText style={{maxWidth:"90%", alignSelf:"center"}} textAlign='center' fontSize='small'>{props.subTitle}</MyText>
+      <View style={styles.topSection}>
+        <View style = {styles.barRow}>
+          <MyIcon 
+          color={navigationTheme.colors.primary}
+          size={25} name='chevron-back-outline' 
+          type='ionicon' onPress={nav.goBack} />
+          <Progress.Bar 
+          height={12.5} width={310}
+          style = {styles.progress}
+          useNativeDriver
+          animationConfig={{bounciness:1}}
+          animationType='spring' 
+          progress={props.progress} 
+          color={navigationTheme.colors.primary} />
+        </View>
+        <View style = {styles.titleRow}>
+          <View>
+            <MyText style={{marginTop:"5%"}} textAlign='center' bold fontSize='XL'>{props.title}</MyText>
+            <MyText style={{maxWidth:"90%", alignSelf:"center"}} textAlign='center' fontSize='small'>{props.subTitle}</MyText>
+          </View>
         </View>
       </View>
-      {props.children}
+      <View style={styles.childrenCon}> 
+        {props.children}
+      </View>
       <MyButton width='85%' title={props.buttonTitle ? props.buttonTitle : 'Next'} onPress={ () => nav.navigate(props.nextScreen)} />
     </View>
   </Page>
@@ -55,11 +59,9 @@ export default OnboardingPage
 const styles = StyleSheet.create({
     con:{
       flex: 1,
-      justifyContent: "space-between",
       alignItems: 'center',
       width:"100%",
       paddingTop:"12.5%",
-      paddingBottom:"10%"
     },
     titleRow:{
       flexDirection:"row",
@@ -78,7 +80,17 @@ const styles = StyleSheet.create({
       width:"100%",
       justifyContent: 'center',
       alignItems: 'center',
-      //borderWidth:1,
+    },
+    topSection:{
+      alignItems: 'center',
+      justifyContent:"center",
+      width: "100%", 
+    },
+    childrenCon:{
+      width:"100%",
+      height:"78%", 
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     progress:{
       

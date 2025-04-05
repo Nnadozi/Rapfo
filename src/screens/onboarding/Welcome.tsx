@@ -9,7 +9,7 @@ import { Image } from '@rneui/themed/dist/Image'
 const Welcome = () => {
   const nav = useNavigation()
   return (
-    <Page customBackground style={{justifyContent:"center", alignItems:"center"}}>
+    <Page dontApplyPadding customBackground style={{justifyContent:"center", alignItems:"center"}}>
       <Image resizeMode='contain' style={styles.img} source={require('../../../assets/images/icon.png')} />
       <MyText bold fontSize='XL'>Welcome to Rapfo!</MyText>
       <MyText style={{marginVertical:"1%"}} textAlign='center' fontSize='small'>Expand your knowledge in just
@@ -19,8 +19,6 @@ const Welcome = () => {
     </Page>
   )
 }
-
-//      <MyButton type='outline' width='85%' title='Returning User? Log in' onPress={ () => nav.navigate('Authentication')} />
 
 export default Welcome
 
