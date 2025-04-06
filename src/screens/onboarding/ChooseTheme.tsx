@@ -19,25 +19,25 @@ const ChooseTheme = () => {
         <TouchableOpacity
           onPress={() => setTheme('light')}
           style={[styles.box, { 
-            borderColor: navigationTheme.colors.text ,
-            backgroundColor: theme === 'light' ? navigationTheme.colors.text:undefined
+            borderColor: theme === 'light' ? navigationTheme.colors.primary:navigationTheme.colors.text,
+            backgroundColor: theme === 'light' ? navigationTheme.colors.primary:undefined
           }]}
         >
           <MyIcon color={theme === 'light' ? navigationTheme.colors.card : navigationTheme.colors.text}  name='sunny-outline' type='ionicon' size={100} />
           <MyText color={theme === 'light' ? navigationTheme.colors.card : navigationTheme.colors.text}  bold>
-            Light {theme === 'light' && '(Current)'}
+            Light {theme === 'light' && '(Selected)'}
           </MyText>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setTheme('dark')}
           style={[styles.box, { 
-            borderColor: navigationTheme.colors.text ,
-            backgroundColor: theme === 'dark' ? navigationTheme.colors.text:undefined
+            borderColor: theme === 'dark' ? navigationTheme.colors.primary:navigationTheme.colors.text,
+            backgroundColor: theme === 'dark' ? navigationTheme.colors.primary:undefined
           }]}
         >
           <MyIcon color={theme === 'dark' ? navigationTheme.colors.card : navigationTheme.colors.text} name='sunny' type='ionicon'  size={100} />
           <MyText color={theme === 'dark' ? navigationTheme.colors.card : navigationTheme.colors.text} bold>
-            Dark {theme === 'dark' && '(Current)'}
+            Dark {theme === 'dark' && '(Selected)'}
           </MyText>
         </TouchableOpacity>
       </View>
@@ -50,13 +50,13 @@ export default ChooseTheme;
 const styles = StyleSheet.create({
   con: {
     width: '100%',
-    height: '95%',
+    height: '100%',
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   box: {
     borderWidth: 1,
-    borderRadius: 30,
+    borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
