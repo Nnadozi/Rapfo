@@ -4,19 +4,21 @@ import { useSettingsStore } from '../stores/useSettingStore';
 
 interface TextProps {
   color?: string;
-  fontSize?: 'small' | 'medium' | 'large' | 'XL';
+  reversedColor?: boolean;
+  fontSize?: 'small' | 'biggerSmall' | 'medium' | 'large' | 'XL';
   bold?: boolean;
   opacity?: number;
   textAlign?: TextStyle['textAlign'];
   style?: TextStyle;
   numberOfLines?: number;
-  font?:string;
+  font?: string;
   onPress?: () => void;
   children: React.ReactNode;
 }
 
 const fontSizes = {
   small: 15,
+  biggerSmall: 17.5,
   medium: 20,
   large: 25,
   XL: 30,
@@ -26,15 +28,25 @@ const MyText: React.FC<TextProps> = ({
   fontSize = 'medium',
   bold = false,
   color,
+  reversedColor,
   children,
   style,
   opacity,
   textAlign,
   numberOfLines,
-  font = "Figtree-Regular",
+  font = 'Figtree-Regular',
   onPress,
 }) => {
-  const {navigationTheme} = useSettingsStore()
+  const { navigationTheme } = useSettingsStore();
+
+  const resolvedColor = color === 'primary'
+    ? navigationTheme.colors.primary
+    : color
+      ? color
+      : reversedColor
+        ? navigationTheme.colors.card
+        : navigationTheme.colors.text;
+
   return (
     <Text
       onPress={onPress}
@@ -42,10 +54,10 @@ const MyText: React.FC<TextProps> = ({
       style={[
         {
           fontSize: fontSizes[fontSize],
-          color: color ? color : navigationTheme.colors.text,
+          color: resolvedColor,
           opacity,
           textAlign,
-          fontFamily: bold ? "Figtree-Bold" : font
+          fontFamily: bold ? 'Figtree-Bold' : font,
         },
         style,
       ]}

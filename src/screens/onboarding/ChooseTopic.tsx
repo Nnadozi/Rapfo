@@ -105,7 +105,7 @@ const ChooseTopic = () => {
       nextScreen="ChooseTheme"
     >
       <View style={styles.con}>
-        <ScrollView contentContainerStyle={{ width:"100%", padding:"5%"}}>
+        <ScrollView contentContainerStyle={{ width:"100%", paddingHorizontal:"5%"}}>
           {Topics.map((topic, index) => {
             const categoryDetail = categoryDetails[topic.category];
             return (

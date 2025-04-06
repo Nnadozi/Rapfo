@@ -12,8 +12,8 @@ const Welcome = () => {
     <Page dontApplyPadding customBackground style={{justifyContent:"center", alignItems:"center"}}>
       <Image resizeMode='contain' style={styles.img} source={require('../../../assets/images/icon.png')} />
       <MyText bold fontSize='XL'>Welcome to Rapfo!</MyText>
-      <MyText style={{marginVertical:"1%"}} textAlign='center' fontSize='small'>Expand your knowledge in just
-         <MyText fontSize='small' bold> 5 minutes</MyText> a day.
+      <MyText style={{marginVertical:"1%"}} textAlign='center' fontSize='small'>Learn something new
+         <MyText fontSize='small' bold> everyday.</MyText>
       </MyText>
       <MyButton style={{marginVertical:"3%"}} width='85%' title='Get Started' onPress={ () => nav.navigate('Overview')} />
     </Page>
