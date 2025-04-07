@@ -6,7 +6,7 @@ import MyButton from '../../components/MyButton';
 import Markdown from "react-native-markdown-display"
 import DigestPreview from '../../components/DigestPreview';
 import { Divider } from '@rneui/base';
-import Badge from '../../components/Badge';
+import Achievement from '../../components/Achievement';
 import MyIcon from '../../components/MyIcon';
 import { useNavigation } from '@react-navigation/native';
 
@@ -67,17 +67,18 @@ const Home = () => {
       <MyText fontSize='XL' bold>Home</MyText>
       <MyIcon onPress={() => nav.navigate('Settings')} name='settings' size={30} />
       </View>
-      <MyText style={{marginVertical:"2%"}} fontSize='small'>🔥 Current Streak: 5 - Keep it up</MyText>
-      <MyText style={{marginTop:"2%"}} fontSize='small'>Today's Digest</MyText>
-      <DigestPreview title='The Sun' category='Science' readingTime={5} date='April 7th, 2025'/>
-      <MyText color='gray' fontSize='small'>Upcoming Badges</MyText>
-      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"3%"}} />
-      <Badge/>
-      <Badge/>
-      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"3%"}} />
+      <MyText style={{marginVertical:"2%"}} fontSize='small'>
+        🔥 Current Streak: <MyText fontSize='small' bold>5</MyText> - Keep it up!
+      </MyText>
+      <DigestPreview title='The Big Bang' category='Science' topic='Astronomy' readingTime={5} date='April 7th, 2025'/>
+      <MyText color='gray' fontSize='small'>Upcoming Achievements </MyText>
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
+      <Achievement progress={0.9} title='Five for Five' desc='Logged in and learn for 5 days straight.'/>
+      <Achievement progress={0.87} title='Top Ranker' desc='Reach the highest rank in the system. '/>
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2%"}} />
       <MyText>Quote Of The Day</MyText>
       <MyText>Fun Fact</MyText>
-      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"3%"}} />
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2%"}} />
       <MyText>Current Rank: RANK</MyText>
       <MyText>text</MyText>
     </Page>

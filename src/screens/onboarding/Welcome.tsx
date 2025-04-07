@@ -10,7 +10,7 @@ const Welcome = () => {
   const nav = useNavigation()
   return (
     <Page dontApplyPadding customBackground style={{justifyContent:"center", alignItems:"center"}}>
-      <Image resizeMode='contain' style={styles.img} source={require('../../../assets/images/icon.png')} />
+      <Image resizeMode='contain' style={styles.img} source={require('../../../assets/images/config/icon.png')} />
       <MyText bold fontSize='XL'>Welcome to Rapfo!</MyText>
       <MyText style={{marginVertical:"1%"}} textAlign='center' fontSize='small'>Learn something new
          <MyText fontSize='small' bold> everyday.</MyText>

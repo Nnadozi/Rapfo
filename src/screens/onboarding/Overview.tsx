@@ -44,7 +44,7 @@ const Overview = () => {
             <MyText color='primary'  bold fontSize='large'>Track Progress</MyText>
           </View>
           <MyText style={[styles.textCon,{backgroundColor:navigationTheme.colors.primary}]}  reversedColor>
-            Stay consistent to build your streak, earn badges, and level up your rank as a rapid learner.
+            Stay consistent to build your streak, earn achievements, and level up your rank as a rapid learner.
           </MyText>
         </View>
 

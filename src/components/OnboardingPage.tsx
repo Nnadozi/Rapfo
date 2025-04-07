@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     childrenCon:{
       width:"100%",
-      height:"79%", 
+      height:"78%", 
       justifyContent: 'center',
       alignItems: 'center',
     },
