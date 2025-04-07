@@ -75,9 +75,23 @@ const Home = () => {
       <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
       <Achievement progress={0.9} title='Five for Five' desc='Logged in and learn for 5 days straight.'/>
       <Achievement progress={0.87} title='Top Ranker' desc='Reach the highest rank in the system. '/>
-      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2%"}} />
-      <MyText>Quote Of The Day</MyText>
-      <MyText>Fun Fact</MyText>
+      <MyText color='gray' fontSize='small' style={{marginTop:'3%'}}>Fun Stuff </MyText>
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
+
+      <View style ={{flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
+        <MyIcon name="bulb1" type='antdesign' size={20} containerStyle={{marginRight:"2%"}}/>
+        <MyText fontSize='small' style={{ marginVertical: "2%"}}>
+          <MyText fontSize='small' bold>Fun fact:</MyText> Humans have unique tongue prints, just like fingerprints
+        </MyText>
+      </View>
+
+      <View style ={{flexDirection:"row", justifyContent:"center", alignItems:"center"}}>
+        <MyIcon name="quote" type='entypo' size={20} containerStyle={{marginRight:"2%"}}/>
+        <MyText fontSize='small' style={{ marginVertical: "2%", flexDirection: "row", alignItems: "center" }}>
+          <MyText fontSize='small' bold>Quote Of The Day:</MyText> "This is the quote of the day" - Chikaosolu Nnadozie
+        </MyText>
+      </View>
+
       <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2%"}} />
       <MyText>Current Rank: RANK</MyText>
       <MyText>text</MyText>
