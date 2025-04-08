@@ -26,11 +26,11 @@ const Home = () => {
         🔥 Current Streak: <MyText fontSize='small' bold>5</MyText> - Keep it up!
       </MyText>
       <DigestPreview title='The Big Bang' category='Science' topic='Astronomy' readingTime={5} date='April 7th, 2025'/>
-      <MyText color='gray' fontSize='small'>Upcoming Achievements </MyText>
+      <MyText bold color='gray' fontSize='biggerSmall'>Upcoming Achievements </MyText>
       <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
       <Achievement progress={0.9} title='Five for Five' desc='Logged in and learn for 5 days straight.'/>
       <Achievement progress={0.87} title='Top Ranker' desc='Reach the highest rank in the system. '/>
-      <MyText style={{marginTop:"1%"}}  color='gray' fontSize='small'>Daily Trivia</MyText>
+      <MyText bold style={{marginTop:"4%"}}  color='gray' fontSize='biggerSmall'>Daily Trivia</MyText>
       <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
       <View style = {[styles.box]}>
         <View style = {[styles.icon,{
@@ -55,7 +55,7 @@ const Home = () => {
           <MyText reversedColor fontSize='small' bold>Quote of the day:
             </MyText> "This is the quote of the day" - Chikaosolu Nnadozie"
         </MyText>
-      </View>
+      </View>z
       <View style = {styles.row}>
         <Image style={styles.img} resizeMode='contain' source={require('../../../assets/images/config/icon.png')} />
         <MyText 
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width:"100%",
-    marginTop:"10%",
+    marginTop:"7.5%",
     gap:"3%",
   }
 })
