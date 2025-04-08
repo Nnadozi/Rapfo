@@ -7,6 +7,7 @@ import History from '../screens/main/History';
 import { Icon } from '@rneui/base';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Settings from '../screens/main/Settings';
+import DailyDigest from '../screens/main/DailyDigest';
 
 const MainTabs = () =>{
   const Tabs = createBottomTabNavigator();
@@ -33,6 +34,7 @@ const MainNav = () =>{
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Screen  name="DailyDigest" component={DailyDigest} />
       <Stack.Screen  name="Settings" component={Settings} />
     </Stack.Navigator>
   )

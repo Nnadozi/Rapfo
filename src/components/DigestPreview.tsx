@@ -1,8 +1,11 @@
-import { ImageBackground, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { ActivityIndicator, ImageBackground, StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
 import MyText from './MyText';
 import MyIcon from './MyIcon';
+import { useNavigation } from '@react-navigation/native';
+import { useSettingsStore } from '../stores/useSettingStore';
 
+const apiKey = process.env.EXPO_PUBLIC_API_KEY
 interface DigestPreviewProps {
   title:string;
   category:string;
@@ -10,7 +13,51 @@ interface DigestPreviewProps {
   readingTime:number;
   date:string;
 }
+
 const DigestPreview = ({title, topic, category, readingTime, date}: DigestPreviewProps) => {
+  const {navigationTheme} = useSettingsStore()
+  const [digest, setDigest] = useState<string | null>("");
+  const [loading, setLoading] = useState(false);
+  const nav = useNavigation()
+  async function generateDigest(){
+    console.log("Generating daily digest....")
+    setLoading(true)
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [
+          {
+            role: 'user',
+            content: `Generate a markdown-formatted explanation about this topic: "${title}".
+            - Do **not** include a title.
+            - Use **headers**, **bold**, and *italic* for emphasis — but **no dividers**.
+            - Keep it within approximately ${readingTime * 50} words (for a ${readingTime}-minute read).
+            - The tone should be concise, engaging, and informative.
+            `
+          }
+        ],
+      }), 
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setDigest(data.choices[0].message.content)
+      console.log(digest)
+    } else {
+      console.error("Error:", data);
+      console.log("Failed to generate digest. Please try again.");
+    }
+    setLoading(false)
+    nav.navigate("DailyDigest",{
+      title:title, category:category, topic:topic, 
+      readingTime:readingTime, digest:digest
+    })
+  }
+
   return (
     <ImageBackground imageStyle={styles.img} resizeMode='repeat' source={require('../../assets/images/background-digest.png')} style={styles.con}>
       <View style ={styles.content}>
@@ -19,7 +66,11 @@ const DigestPreview = ({title, topic, category, readingTime, date}: DigestPrevie
               <MyText reversedColor fontSize='large' bold>{title}</MyText>
               <MyText style={{marginVertical:"1%"}} reversedColor fontSize='small'>{category}: {topic}</MyText>
             </View>
-            <MyIcon reversedColor onPress={() => console.log("Opening digest...")} name='play' type='antdesign' size={50} />
+            {loading ? (
+              <ActivityIndicator size={'large'} color={navigationTheme.colors.card} />
+            ): (
+              <MyIcon reversedColor onPress={generateDigest} name='play' type='antdesign' size={50} />
+            )}
           </View>
           <View style = {styles.bottomRow}>
             <View style = {{flexDirection:"row", alignItems:"center",gap:"10%"}}>
@@ -43,7 +94,6 @@ const styles = StyleSheet.create({
     width:"100%",
     height:"20%",
     justifyContent:"space-between",
-    //borderWidth:1,
   },
   img:{
     width:"100%",
@@ -69,20 +119,3 @@ const styles = StyleSheet.create({
 })
 
 
-/**
- * 
- *    <View style={styles.topRow}>
-        <View>
-          <MyText fontSize='large' bold>{title}</MyText>
-          <MyText fontSize='small'>Topic: {topic} ({category})</MyText>
-        </View>
-        <MyIcon onPress={() => console.log("Opening digest...")} name='play' type='antdesign' size={50} />
-      </View>
-      <View style = {styles.bottomRow}>
-        <View style = {{flexDirection:"row", alignItems:"center",gap:"10%"}}>
-          <MyIcon name='clockcircle' type='antdesign' size={15} />
-          <MyText fontSize='small'>{readingTime} min</MyText>
-        </View>
-        <MyText fontSize='small' >{date}</MyText>
-      </View>
- */

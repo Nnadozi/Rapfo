@@ -1,5 +1,6 @@
 import { Text, TextStyle } from 'react-native';
 import React from 'react';
+import Markdown from 'react-native-markdown-display';
 import { useSettingsStore } from '../stores/useSettingStore';
 
 interface TextProps {
@@ -14,6 +15,7 @@ interface TextProps {
   font?: string;
   onPress?: () => void;
   children: React.ReactNode;
+  markdown?: boolean;
 }
 
 const fontSizes = {
@@ -36,6 +38,7 @@ const MyText: React.FC<TextProps> = ({
   numberOfLines,
   font = 'Figtree-Regular',
   onPress,
+  markdown = false,
 }) => {
   const { navigationTheme } = useSettingsStore();
 
@@ -47,20 +50,31 @@ const MyText: React.FC<TextProps> = ({
         ? navigationTheme.colors.card
         : navigationTheme.colors.text;
 
+  const baseStyle: TextStyle = {
+    fontSize: fontSizes[fontSize],
+    color: resolvedColor,
+    opacity,
+    textAlign,
+    fontFamily: bold ? 'Figtree-Bold' : font,
+  };
+
+  if (markdown && typeof children === 'string') {
+    return (
+      <Markdown
+        style={{
+          body: [baseStyle, style],
+        }}
+      >
+        {children}
+      </Markdown>
+    );
+  }
+
   return (
     <Text
       onPress={onPress}
       numberOfLines={numberOfLines}
-      style={[
-        {
-          fontSize: fontSizes[fontSize],
-          color: resolvedColor,
-          opacity,
-          textAlign,
-          fontFamily: bold ? 'Figtree-Bold' : font,
-        },
-        style,
-      ]}
+      style={[baseStyle, style]}
     >
       {children}
     </Text>

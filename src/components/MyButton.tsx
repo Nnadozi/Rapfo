@@ -13,9 +13,10 @@ interface MyButtonProps {
   type?: 'solid' | 'clear' | 'outline';
   iconName?:string;
   iconType?:string;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-const MyButton = ({title, onPress, width, style, type = "solid", iconName, iconType}: MyButtonProps) => {
+const MyButton = ({title, onPress, width, style, type = "solid", iconName, iconType, size}: MyButtonProps) => {
   const {navigationTheme} = useSettingsStore()
   return (
     <Button
@@ -26,7 +27,7 @@ const MyButton = ({title, onPress, width, style, type = "solid", iconName, iconT
       containerStyle={[{width:width,},style,type === "outline" ? styles.outlineStyle : null]}
       radius={50}
       titleStyle={{fontFamily:'Figtree-Bold', color: type !== 'solid' ? navigationTheme.colors.primary : navigationTheme.colors.background}}
-      size='lg'
+      size={size || 'lg'}
       color={navigationTheme.colors.primary}
       type={type ? type : 'solid'}
     />
