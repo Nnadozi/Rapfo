@@ -1,4 +1,4 @@
-import { ActivityIndicator, ImageBackground, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, ImageBackground, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import React, { useState } from 'react'
 import MyText from './MyText';
 import MyIcon from './MyIcon';
@@ -12,9 +12,10 @@ interface DigestPreviewProps {
   topic:string;
   readingTime:number;
   date:string;
+  style?:ViewStyle;
 }
 
-const DigestPreview = ({title, topic, category, readingTime, date}: DigestPreviewProps) => {
+const DigestPreview = ({title, topic, category, readingTime, date, style}: DigestPreviewProps) => {
   const {navigationTheme} = useSettingsStore()
   const [digest, setDigest] = useState<string | null>("");
   const [loading, setLoading] = useState(false);
@@ -60,7 +61,7 @@ const DigestPreview = ({title, topic, category, readingTime, date}: DigestPrevie
   }
 
   return (
-    <ImageBackground imageStyle={styles.img} resizeMode='repeat' source={require('../../assets/images/background-digest.png')} style={styles.con}>
+    <ImageBackground imageStyle={styles.img} resizeMode='repeat' source={require('../../assets/images/background-digest.png')} style={[styles.con,style]}>
       <View style ={styles.content}>
           <View style={styles.topRow}>
             <View>
@@ -89,11 +90,9 @@ export default DigestPreview
 
 const styles = StyleSheet.create({
   con:{
-    marginTop:"3%",
-    marginBottom:'8%',
     borderRadius:15,
     width:"100%",
-    height:"20%",
+    height:150,
     justifyContent:"space-between",
   },
   img:{
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
   content:{
     flex:1,
     justifyContent:"space-between",
-    padding:"4%"
+    padding:"4%",
   },
   topRow:{
     flexDirection:"row",

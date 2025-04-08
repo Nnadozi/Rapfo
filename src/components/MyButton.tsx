@@ -6,23 +6,26 @@ import { useSettingsStore } from '../stores/useSettingStore';
 
 
 interface MyButtonProps {
-  title:string;
-  onPress: () => void;
+  title?:string;
+  onPress?: () => void;
   width?:string;
   style?: ViewStyle;
   type?: 'solid' | 'clear' | 'outline';
   iconName?:string;
   iconType?:string;
   size?: 'sm' | 'md' | 'lg';
+  iconColorReversed?:boolean;
 }
 
-const MyButton = ({title, onPress, width, style, type = "solid", iconName, iconType, size}: MyButtonProps) => {
+const MyButton = ({title, onPress, width, style, type = "solid", iconName, iconType, size,iconColorReversed}: MyButtonProps) => {
   const {navigationTheme} = useSettingsStore()
   return (
     <Button
-      icon = { iconName ? {name:iconName, type:iconType, color:navigationTheme.colors.background} : undefined} 
+      icon = { iconName ? {name:iconName, type:iconType, 
+        color: iconColorReversed ? navigationTheme.colors.primary : navigationTheme.colors.background} : undefined} 
       iconContainerStyle = {{marginHorizontal:"3%"}}
       title={title}
+      iconPosition='left'
       onPress={onPress}
       containerStyle={[{width:width,},style,type === "outline" ? styles.outlineStyle : null]}
       radius={50}

@@ -1,9 +1,7 @@
-import { ActivityIndicator, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet,  View } from 'react-native';
+import React  from 'react';
 import Page from '../../components/Page';
 import MyText from '../../components/MyText';
-import MyButton from '../../components/MyButton';
-import Markdown from "react-native-markdown-display"
 import DigestPreview from '../../components/DigestPreview';
 import { Divider } from '@rneui/base';
 import Achievement from '../../components/Achievement';
@@ -25,7 +23,9 @@ const Home = () => {
       <MyText style={{marginVertical:"2%"}} fontSize='small'>
         🔥 Current Streak: <MyText fontSize='small' bold>5</MyText> - Keep it up!
       </MyText>
-      <DigestPreview title='The Big Bang' category='Science' topic='Astronomy' readingTime={5} date='April 7th, 2025'/>
+      <DigestPreview 
+      title='The Big Bang'  style={{marginTop:"3%",marginBottom:"8%"}}
+      category='Science' topic='Astronomy' readingTime={5} date='April 7th, 2025'/>
       <MyText bold color='gray' fontSize='biggerSmall'>Upcoming Achievements </MyText>
       <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
       <Achievement progress={0.9} title='Five for Five' desc='Logged in and learn for 5 days straight.'/>
