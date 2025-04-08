@@ -36,6 +36,7 @@ const DigestPreview = ({title, topic, category, readingTime, date}: DigestPrevie
             content: `Generate a markdown-formatted explanation about this topic: "${title}".
             - Do **not** include a title.
             - Use **headers**, **bold**, and *italic* for emphasis — but **no dividers**.
+            - All headers should be bold and header level 3.
             - Keep it within approximately ${readingTime * 50} words (for a ${readingTime}-minute read).
             - The tone should be concise, engaging, and informative.
             `
