@@ -10,6 +10,7 @@ import Achievement from '../../components/Achievement';
 import MyIcon from '../../components/MyIcon';
 import { useNavigation } from '@react-navigation/native';
 import { useSettingsStore } from '../../stores/useSettingStore';
+import { Image } from 'react-native';
 
 
 const Home = () => {
@@ -55,11 +56,12 @@ const Home = () => {
             </MyText> "This is the quote of the day" - Chikaosolu Nnadozie"
         </MyText>
       </View>
-      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
-      <MyText>Current Rank: Novice</MyText>
-      <TouchableOpacity>
-        <MyText fontSize='small' color='primary' bold>See Rank Requirements ></MyText>
-      </TouchableOpacity>
+      <View style = {styles.row}>
+        <Image style={styles.img} resizeMode='contain' source={require('../../../assets/images/config/icon.png')} />
+        <MyText 
+        color='gray' fontSize='small'
+        style = {{alignSelf:"center"}}>Keep on learning!</MyText>
+      </View>
     </Page>
   );
 };
@@ -83,15 +85,29 @@ const styles = StyleSheet.create({
   icon:{
     alignItems: "center",
     justifyContent: "center",
-    padding:'2%',
+    padding:'3%',
     borderWidth:3.4,
     borderTopLeftRadius:15,
     borderBottomLeftRadius:15,
   },
   text:{
     flex:1,
-    padding:"2%",
+    padding:"3%",
     borderTopRightRadius:15,
     borderBottomRightRadius:15
+  },
+  img:{
+    width:"7.5%",
+    height:undefined,
+    aspectRatio:1,
+    borderRadius:10
+  },
+  row:{
+    flexDirection:"row",
+    alignItems: "center",
+    justifyContent: "center",
+    width:"100%",
+    marginTop:"10%",
+    gap:"3%",
   }
 })
