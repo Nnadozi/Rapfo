@@ -27,10 +27,10 @@ const DailyDigest = ({route}) => {
       </View>
       <Divider style = {{width:"100%", alignSelf:"center",marginVertical:'3%'}} width={1} />
       <ScrollView contentContainerStyle = {{paddingBottom:"5%"}}>
-        <MyText fontSize='biggerSmall' markdown>{digest}</MyText>
+        <MyText style={{marginTop:"3%"}} fontSize='biggerSmall'>{digest}</MyText>
         <MyButton 
-        title='Cool!' onPress={logDigest} width='80%' size='lg'
-        style={{alignSelf:"center", marginVertical:"3%"}} />
+        title='Cool!' onPress={logDigest} width='80%' size='md'
+        style={{alignSelf:"center", marginTop:"7.5%"}} />
       </ScrollView>
     </Page>
   )

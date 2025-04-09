@@ -25,12 +25,12 @@ const Home = () => {
       </MyText>
       <DigestPreview 
       title='The Big Bang'  style={{marginTop:"3%",marginBottom:"8%"}}
-      category='Science' topic='Astronomy' readingTime={5} date='April 7th, 2025'/>
+      category='Science' topic='Astronomy' readingTime={3} date='April 7th, 2025'/>
       <MyText bold color='gray' fontSize='biggerSmall'>Upcoming Achievements </MyText>
       <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
       <Achievement progress={0.9} title='Five for Five' desc='Logged in and learn for 5 days straight.'/>
       <Achievement progress={0.87} title='Top Ranker' desc='Reach the highest rank in the system. '/>
-      <MyText bold style={{marginTop:"4%"}}  color='gray' fontSize='biggerSmall'>Daily Trivia</MyText>
+      <MyText bold style={{marginTop:"3%"}}  color='gray' fontSize='biggerSmall'>Daily Trivia</MyText>
       <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
       <View style = {[styles.box]}>
         <View style = {[styles.icon,{
