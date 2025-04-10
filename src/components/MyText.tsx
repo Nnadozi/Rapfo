@@ -1,4 +1,4 @@
-import { Text, TextStyle } from 'react-native';
+import { Text, TextStyle, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Markdown from 'react-native-markdown-display';
 import { useSettingsStore } from '../stores/useSettingStore';
@@ -45,10 +45,10 @@ const MyText: React.FC<TextProps> = ({
   const resolvedColor = color === 'primary'
     ? navigationTheme.colors.primary
     : color
-      ? color
-      : reversedColor
-        ? navigationTheme.colors.card
-        : navigationTheme.colors.text;
+    ? color
+    : reversedColor
+    ? navigationTheme.colors.card
+    : navigationTheme.colors.text;
 
   const baseStyle: TextStyle = {
     fontSize: fontSizes[fontSize],
@@ -70,9 +70,21 @@ const MyText: React.FC<TextProps> = ({
     );
   }
 
+  if (onPress) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <Text
+          numberOfLines={numberOfLines}
+          style={[baseStyle, style]}
+        >
+          {children}
+        </Text>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <Text
-      onPress={onPress}
       numberOfLines={numberOfLines}
       style={[baseStyle, style]}
     >

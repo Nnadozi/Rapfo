@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
 import Page from '../../components/Page';
 import MyText from '../../components/MyText';
@@ -47,15 +47,14 @@ const Profile = () => {
         progress={0.75}
         color={navigationTheme.colors.primary}
       />
-      <MyText style={{ marginVertical: '1.5%' }} color="primary" fontSize="small">
-        75% to Amateur:<MyText bold color="primary" fontSize="small"> tap to see all ranks</MyText>
-      </MyText>
-      <MyText style={{ marginTop: '7.5%' }} bold color="gray" fontSize="small">All Achievements</MyText>
-      <Divider color="gray" width={1} style={{ width: '100%', alignSelf: 'center', marginVertical: '2.5%' }} />
-      <Tab
+      <View style = {{flexDirection:"row", alignItems:"center"}}>
+        <MyText style={{ marginVertical: '2%' }} color="primary" fontSize="small">75% to Amateur:</MyText>
+        <MyText onPress={() =>{}}   bold color="primary" fontSize="small"> tap to see all ranks</MyText>
+      </View>
+      <Tab 
         value={activeTab}
         onChange={(index) => setActiveTab(index)}
-        indicatorStyle={{ backgroundColor: navigationTheme.colors.primary, height: 3 }}
+        indicatorStyle={{ backgroundColor: navigationTheme.colors.primary }}
       >
         <Tab.Item
           title="In Progress"
@@ -66,8 +65,27 @@ const Profile = () => {
           titleStyle={{ color: activeTab === 1 ? navigationTheme.colors.primary : 'gray' }}
         />
       </Tab>
-      <View style={{ marginTop: '5%' }}>
+      <ScrollView style={{ marginTop: '5%', width:"100%", borderWidth:0, alignSelf:"center"}}>
         {renderAchievements()}
+      </ScrollView>
+      <MyText style={{marginTop:"5%"}} bold color='gray' fontSize='small'>Numbers</MyText>
+      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
+      <View style = {{gap:20}}>
+        <MyText style={{marginTop:"1%"}} bold fontSize='small'>Current Streak:
+          <MyText fontSize='small'> 5 days</MyText>
+        </MyText>
+        <MyText bold fontSize='small'>Longest Streak:
+          <MyText fontSize='small'> 12 days</MyText>
+        </MyText>
+        <MyText bold fontSize='small'>Date Jointed:
+          <MyText fontSize='small'> April 2th, 2025 days</MyText>
+        </MyText>
+        <MyText bold fontSize='small'>Digests Completed:
+          <MyText fontSize='small'> 7</MyText>
+        </MyText>
+        <MyText bold fontSize='small'>Reading Time:
+          <MyText fontSize='small'> 1 hour 5 minutes</MyText>
+        </MyText>
       </View>
     </Page>
   );

@@ -25,7 +25,7 @@ const Achievement = (props: AchievementProps) => {
       <View style = {{flexDirection:"row", alignItems:"center",gap:'3%'}}>
         <MyText bold color='primary' fontSize='small'>{props.progress * 100}%</MyText>
         <Progress.Bar 
-          height={5} width={300}
+          height={5} width={295}
           style = {styles.progress}
           progress={props.progress} 
           color={navigationTheme.colors.primary} 
