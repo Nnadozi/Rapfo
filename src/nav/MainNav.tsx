@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/main/Home';
-import Stats from '../screens/main/Stats';
+import ProgressScreen from '../screens/main/Progress';
 import History from '../screens/main/History';
 import { Icon } from '@rneui/base';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -21,8 +21,8 @@ const MainTabs = () =>{
            tabBarIcon: ({focused}) => <Icon name='home' color={focused ? "#41AFEF" : 'lightgray'}  />,
            tabBarActiveTintColor:"#41AFEF",tabBarInactiveTintColor:'lightgray'
         }} />
-        <Tabs.Screen name="Stats" component={Stats}  options={{
-           tabBarIcon: ({focused}) => <Icon size={18} name='stats-chart' color={focused ? "#41AFEF" : 'lightgray'} type='ionicon'  />,
+        <Tabs.Screen name="Progress" component={ProgressScreen}  options={{
+           tabBarIcon: ({focused}) => <Icon size={18}  name='line-chart' color={focused ? "#41AFEF" : 'lightgray'} type='font-awesome'  />,
            tabBarActiveTintColor:"#41AFEF",tabBarInactiveTintColor:'lightgray'
         }} />
     </Tabs.Navigator>

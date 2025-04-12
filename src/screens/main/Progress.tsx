@@ -8,18 +8,27 @@ import Achievement from '../../components/Achievement';
 import { Divider } from '@rneui/base';
 import { Tab } from '@rneui/themed';
 
-const Profile = () => {
+const ProgressScreen = () => {
   const { navigationTheme } = useSettingsStore();
   const [activeTab, setActiveTab] = useState(0); 
 
   const achievementsInProgress = [
     { progress: 0.9, title: 'Five for Five', desc: 'Logged in and learn for 5 days straight.' },
     { progress: 0.87, title: 'Top Ranker', desc: 'Reach the highest rank in the system.' },
+    { progress: 0.87, title: 'Top Ranker', desc: 'Reach the highest rank in the system.' },
+    { progress: 0.87, title: 'Top Ranker', desc: 'Reach the highest rank in the system.' },
+    { progress: 0.87, title: 'Top Ranker', desc: 'Reach the highest rank in the system.' },
+    { progress: 0.87, title: 'Top Ranker', desc: 'Reach the highest rank in the system.' },
   ];
+  
 
   const completedAchievements = [
     { progress: 1, title: 'First Steps', desc: 'Completed your first digest.' },
     { progress: 1, title: 'Daily Learner', desc: 'Logged in for 7 consecutive days.' },
+    { progress: 1, title: 'Daily Learner', desc: 'Logged in for 7 consecutive days.' },
+    { progress: 1, title: 'Daily Learner', desc: 'Logged in for 7 consecutive days.' },
+    { progress: 1, title: 'Daily Learner', desc: 'Logged in for 7 consecutive days.' },
+    { progress: 0.87, title: 'Top Ranker', desc: 'Reach the highest rank in the system.' },
   ];
 
   const renderAchievements = () => {
@@ -35,8 +44,8 @@ const Profile = () => {
   };
 
   return (
-    <Page style={{ alignItems: 'flex-start', justifyContent: 'flex-start', paddingBottom: '5%' }}>
-      <MyText bold fontSize="XL">Statistics</MyText>
+    <Page  style={{ alignItems: 'flex-start', paddingBottom:'7.5%' }}>
+      <MyText bold fontSize="XL">Progress</MyText>
       <MyText style={{ marginTop: '5%' }}>
         <MyText bold>Current Rank: </MyText>Novice
       </MyText>
@@ -65,32 +74,44 @@ const Profile = () => {
           titleStyle={{ color: activeTab === 1 ? navigationTheme.colors.primary : 'gray' }}
         />
       </Tab>
-      <ScrollView style={{ marginTop: '5%', width:"100%", borderWidth:0, alignSelf:"center"}}>
+      <ScrollView contentContainerStyle={{ paddingVertical: '5%', paddingBottom:"5%", width:"100%"}}>
         {renderAchievements()}
       </ScrollView>
-      <MyText style={{marginTop:"5%"}} bold color='gray' fontSize='small'>Numbers</MyText>
-      <Divider color='gray' width={1} style={{width:"100%",alignSelf:"center", marginVertical:"2.5%"}} />
-      <View style = {{gap:20}}>
-        <MyText style={{marginTop:"1%"}} bold fontSize='small'>Current Streak:
-          <MyText fontSize='small'> 5 days</MyText>
+      <View style = {styles.box}>
+        <MyText reversedColor bold fontSize='small'>Current Streak:
+          <MyText reversedColor  fontSize='small'> 5 days</MyText>
         </MyText>
-        <MyText bold fontSize='small'>Longest Streak:
-          <MyText fontSize='small'> 12 days</MyText>
+        <MyText reversedColor  bold fontSize='small'>Longest Streak:
+          <MyText reversedColor  fontSize='small'> 12 days</MyText>
         </MyText>
-        <MyText bold fontSize='small'>Date Jointed:
-          <MyText fontSize='small'> April 2th, 2025 days</MyText>
+        <MyText reversedColor  bold fontSize='small'>Date Jointed:
+          <MyText reversedColor   fontSize='small'> April 2th, 2025 days</MyText>
         </MyText>
-        <MyText bold fontSize='small'>Digests Completed:
-          <MyText fontSize='small'> 7</MyText>
+        <MyText reversedColor  bold fontSize='small'>Digests Completed:
+          <MyText reversedColor  fontSize='small'> 7</MyText>
         </MyText>
-        <MyText bold fontSize='small'>Reading Time:
-          <MyText fontSize='small'> 1 hour 5 minutes</MyText>
+        <MyText reversedColor  bold fontSize='small'>Reading Time:
+          <MyText reversedColor  fontSize='small'> 1 hour 5 minutes</MyText>
+        </MyText>
+        <MyText reversedColor  bold fontSize='small'>Achievements:
+          <MyText reversedColor  fontSize='small'> 5</MyText>
         </MyText>
       </View>
     </Page>
   );
 };
 
-export default Profile;
+export default ProgressScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  box:{
+    borderRadius:20,
+    width:"100%",
+    height:"30%",
+    justifyContent:"center",
+    gap:'5%',
+    paddingHorizontal:"5%",
+    backgroundColor:"#41AFEF",
+    marginTop:"7.5%"
+  }
+});
