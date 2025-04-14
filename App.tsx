@@ -8,12 +8,14 @@ import { useSettingsStore } from './src/stores/useSettingStore';
 import OnboardNav from './src/nav/OnboardNav';
 import MainNav from './src/nav/MainNav';
 import AuthNav from './src/nav/AuthNav';
+import useUserStore from './src/stores/useUserStore';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   const { loadSettings, navigationTheme } = useSettingsStore();
+  const {loadUserData} = useUserStore()
 
   const [loaded, error] = useFonts({
     "Figtree-Regular": require("./assets/fonts/Figtree-Regular.ttf"),
@@ -21,7 +23,11 @@ export default function App() {
   });
 
   useEffect(() => {
-    loadSettings();
+    const initializeApp = async () => {
+      await loadSettings(); 
+      await loadUserData(); 
+    };
+    initializeApp();
   }, []);
 
   useEffect(() => {

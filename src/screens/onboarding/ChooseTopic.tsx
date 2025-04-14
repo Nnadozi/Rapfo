@@ -6,6 +6,7 @@ import MyIcon from '../../components/MyIcon';
 import Topics from '../../constants/Topics';
 import { Chip } from '@rneui/base';
 import { useSettingsStore } from '../../stores/useSettingStore';
+import useUserStore from '../../stores/useUserStore'; 
 
 const categoryDetails = {
   Science: {
@@ -34,18 +35,10 @@ const categoryDetails = {
   },
 };
 
-interface Topic {
-  category: string;
-  topics: string[];
-}
-
-interface SelectedOptions {
-  [key: string]: string[];
-}
-
-const ChooseTopic = () => {
+const ChooseTopic = ({ navigation }) => {
   const { navigationTheme } = useSettingsStore();
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({
+  const { setSelectedTopics, saveUserData } = useUserStore(); 
+  const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: string[] }>({
     Science: [],
     Math: [],
     History: [],
@@ -69,13 +62,13 @@ const ChooseTopic = () => {
               borderWidth: 1,
               borderColor: selectedOptions[Topics[index].category].includes(option)
                 ? navigationTheme.colors.primary
-                : "gray",
+                : 'gray',
             }}
             titleStyle={{
               color: selectedOptions[Topics[index].category].includes(option)
                 ? navigationTheme.colors.card
-                : "gray",
-              fontSize:13
+                : 'gray',
+              fontSize: 13,
             }}
           />
         ))}
@@ -97,15 +90,23 @@ const ChooseTopic = () => {
     });
   };
 
+  const handleNext = () => {
+    const allSelectedTopics = Object.values(selectedOptions).flat();
+    setSelectedTopics(allSelectedTopics); 
+    saveUserData();
+    navigation.navigate('ChooseTheme'); 
+  };
+
   return (
     <OnboardingPage
       title="Choose Topics"
       subTitle="What interests you?"
       progress={0.4}
-      nextScreen="ChooseTheme"
+      onNext={handleNext}
+      nextScreen="ChooseTheme" 
     >
       <View style={styles.con}>
-        <ScrollView contentContainerStyle={{ width:"100%", paddingHorizontal:"5%"}}>
+        <ScrollView contentContainerStyle={{ width: '100%', paddingHorizontal: '5%' }}>
           {Topics.map((topic, index) => {
             const categoryDetail = categoryDetails[topic.category];
             return (
@@ -114,7 +115,9 @@ const ChooseTopic = () => {
                   <MyIcon name={categoryDetail.icon} type="ionicon" />
                   <View>
                     <MyText bold>{topic.category}</MyText>
-                    <MyText style={{marginVertical:"1%"}}  fontSize="small">{categoryDetail.subtitle}</MyText>
+                    <MyText style={{ marginVertical: '1%' }} fontSize="small">
+                      {categoryDetail.subtitle}
+                    </MyText>
                   </View>
                 </View>
                 {renderChips(index)}
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
   con: {
     width: '100%',
     height: '100%',
-    paddingVertical:"2%"
+    paddingVertical: '2%',
   },
   header: {
     flexDirection: 'row',

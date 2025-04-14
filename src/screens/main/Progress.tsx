@@ -7,9 +7,11 @@ import { useSettingsStore } from '../../stores/useSettingStore';
 import Achievement from '../../components/Achievement';
 import { Divider } from '@rneui/base';
 import { Tab } from '@rneui/themed';
+import useUserStore from '../../stores/useUserStore';
 
 const ProgressScreen = () => {
   const { navigationTheme } = useSettingsStore();
+  const {rank} = useUserStore()
   const [activeTab, setActiveTab] = useState(0); 
 
   const achievementsInProgress = [
@@ -47,7 +49,7 @@ const ProgressScreen = () => {
     <Page  style={{ alignItems: 'flex-start', paddingBottom:'7.5%' }}>
       <MyText bold fontSize="XL">Progress</MyText>
       <MyText style={{ marginTop: '5%' }}>
-        <MyText bold>Current Rank: </MyText>Novice
+        <MyText bold>Current Rank: </MyText>{rank}
       </MyText>
       <Progress.Bar
         height={10}

@@ -15,6 +15,7 @@ interface OnboardingPageProps {
     buttonTitle?:string;
     progress:number;
     children?:React.ReactNode;
+    onNext?:()=>void;
 }
 
 
@@ -49,7 +50,7 @@ const OnboardingPage = (props: OnboardingPageProps) => {
       <View style={styles.childrenCon}> 
         {props.children}
       </View>
-      <MyButton width='85%' title={props.buttonTitle ? props.buttonTitle : 'Next'} onPress={ () => nav.navigate(props.nextScreen)} />
+      <MyButton width='85%' title={props.buttonTitle ? props.buttonTitle : 'Next'} onPress={  props.onNext ? props.onNext : () => nav.navigate(props.nextScreen)} />
     </View>
   </Page>
   )
