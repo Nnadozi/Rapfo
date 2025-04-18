@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Page from '../../components/Page';
 import MyText from '../../components/MyText';
 import * as Progress from 'react-native-progress';
@@ -9,6 +9,7 @@ import { Tab } from '@rneui/themed';
 import useUserStore from '../../stores/useUserStore';
 import Achievements from '../../constants/Achievements';
 import Ranks from '../../constants/Ranks';
+import RanksOverlay from '../../components/RanksOverlay';
 
 const ProgressScreen = () => {
   const { navigationTheme } = useSettingsStore();
@@ -22,14 +23,15 @@ const ProgressScreen = () => {
     rankProgress,
     getAchievementProgress,
     dateJoined,
-    longestStreak
+    longestStreak,
   } = useUserStore();
   const [activeTab, setActiveTab] = useState(0);
+  const [isRanksOverlayVisible, setRanksOverlayVisible] = useState(false);
 
   const renderAchievements = () => {
     if (activeTab === 0) {
       if (inProgressAchievements().length === 0) {
-        return <MyText fontSize='biggerSmall' >No achievements in progress.</MyText>;
+        return <MyText fontSize="biggerSmall">No achievements in progress.</MyText>;
       }
       return inProgressAchievements().map((achievementTitle: string, index: React.Key | null | undefined) => (
         <Achievement
@@ -41,7 +43,7 @@ const ProgressScreen = () => {
       ));
     } else {
       if (completedAchievements.length === 0) {
-        return <MyText fontSize='biggerSmall'>No completed achievements yet.</MyText>;
+        return <MyText fontSize="biggerSmall">No completed achievements yet.</MyText>;
       }
       return completedAchievements.map((achievementTitle, index) => (
         <Achievement
@@ -64,14 +66,21 @@ const ProgressScreen = () => {
         height={10}
         width={350}
         style={{ marginTop: '2.5%' }}
-        progress={rankProgress()} 
+        progress={rankProgress()}
         color={navigationTheme.colors.primary}
       />
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <MyText style={{ marginVertical: '2%' }} color="primary" fontSize="small">
           {Math.round(rankProgress() * 100)}% to {Ranks[Ranks.findIndex((r) => r.rank === rank) + 1]?.rank || 'Max Rank'}.
         </MyText>
-        <MyText onPress={() => {}} bold color="primary" fontSize="small"> tap to see all ranks</MyText>
+        <MyText
+          onPress={() => setRanksOverlayVisible(true)}
+          bold
+          color="primary"
+          fontSize="small"
+        >
+          tap to see all ranks
+        </MyText>
       </View>
       <Tab
         value={activeTab}
@@ -110,6 +119,9 @@ const ProgressScreen = () => {
           <MyText reversedColor fontSize="small"> {dateJoined}</MyText>
         </MyText>
       </View>
+      {isRanksOverlayVisible && (
+        <RanksOverlay onClose={() => setRanksOverlayVisible(false)} />
+      )}
     </Page>
   );
 };
