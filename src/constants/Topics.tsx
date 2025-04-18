@@ -9,15 +9,15 @@ export default [
     },
     {
         category: "History",
-        topics: ["Ancient Civilizations", "World Wars", "U.S. History", "European History", "Colonialism", "Historical Figures", "Revolution Movements", "Modern History"]
+        topics: ["Ancient Civilizations", "World Wars", "U.S. History", "Colonialism", "Historical Figures", "Revolution Movements", "Modern History"]
     },
     {
         category: "Geography",
-        topics: ["Continents & Oceans", "Climate & Weather", "Countries & Capitals", "Geographical Features", "Natural Resources", "Cartography", "Environmental Science", "Urban Planning"]
+        topics: ["Continents & Oceans", "Climate & Weather", "Countries & Capitals", "Geographical Features", "Natural Resources", "Environmental Science"]
     },
     {
         category: "Literature",
-        topics: ["Classic Literature", "Poetry", "Modern Literature", "Mythology", "Literary Devices", "Short Stories", "Plays & Dramas", "Non-fiction"]
+        topics: ["Classic Literature", "Poetry", "Modern Literature", "Mythology", "Literary Devices", "Plays & Dramas", "Non-fiction"]
     },
     {
         category: "Technology",

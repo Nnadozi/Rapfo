@@ -37,7 +37,7 @@ const DigestPreview = ({title, topic, category, readingTime, date, style}: Diges
             content: `Generate a markdown-formatted explanation about this topic: "${title}".
             - Do **not** include a title.
             - DO NOT USE ANY MARKDOWN
-            - Keep it within approximately ${readingTime * 40} words (for a ${readingTime}-minute read).
+            - Keep it within approximately ${readingTime * 60} words (for a ${readingTime}-minute read).
             - The tone should be concise, engaging, and informative.
             `
           }

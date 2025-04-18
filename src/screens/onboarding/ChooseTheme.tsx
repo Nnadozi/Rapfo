@@ -6,7 +6,7 @@ import { useSettingsStore } from '../../stores/useSettingStore';
 import MyIcon from '../../components/MyIcon';
 
 const ChooseTheme = () => {
-  const { setTheme, navigationTheme, theme } = useSettingsStore(); // Access the current theme
+  const { setTheme, navigationTheme, theme } = useSettingsStore();
 
   return (
     <OnboardingPage
